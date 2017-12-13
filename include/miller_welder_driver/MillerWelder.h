@@ -71,11 +71,25 @@ public:
     : Session(socket, io_socket) {}
 
   void startUDPIO();
+  void sendMeasurmentReportConfigUDP();
+  MeasurementReport receiveMeasurementReportUDP();
+
+  void setAttribute_01(EIP_UINT attr_val);
+  void setAttribute_02(EIP_UINT attr_val);
+  void setAttribute_03(EIP_UINT attr_val);
+
+  EIP_UINT getAttribute_01();
+  EIP_UINT getAttribute_02();
+  EIP_UINT getAttribute_03();
 
 private:
 
 
 };
+
+
+
+
 
 
 } // namespace miller_welder_driver
