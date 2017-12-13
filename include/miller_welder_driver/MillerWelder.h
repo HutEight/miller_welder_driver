@@ -83,7 +83,11 @@ public:
   EIP_UINT getAttribute_03();
 
 private:
-
+  
+  // data for sending to lidar to keep UDP session alive
+  int connection_num_;
+  MeasurementReportConfig mrc_;
+  EIP_UDINT mrc_sequence_num_;
 
 };
 

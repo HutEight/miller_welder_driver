@@ -46,6 +46,7 @@ namespace miller_welder_driver {
  */
 class MeasurementReportHeader : public Serializable
 {
+// FIXME
 public:
   EIP_UDINT scan_count; // RN_NOTE typedef uint32_t 	EIP_UDINT
   EIP_UDINT scan_rate;

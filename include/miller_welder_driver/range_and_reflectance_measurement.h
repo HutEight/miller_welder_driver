@@ -40,7 +40,7 @@ using eip::serialization::Serializable;
 using eip::serialization::Reader;
 using eip::serialization::Writer;
 
-namespace omron_os32c_driver {
+namespace miller_welder_driver {
 
 /**
  * Data structure and operators for OS32C specific Measurement Report data

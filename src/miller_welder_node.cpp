@@ -41,12 +41,21 @@ int main(int argc, char *argv[])
   try
   {
     millerWelder.startUDPIO();
-    // millerWelder.sendMeasurmentReportConfigUDP();
+    millerWelder.sendMeasurmentReportConfigUDP();
   }
   catch (std::logic_error ex)
   {
     ROS_FATAL_STREAM("Could not start UDP IO: " << ex.what());
     return -1;
+  }
+
+  int ctr = 10;
+
+  while (ros::ok())
+  {
+
+
+    
   }
 
   return 0;

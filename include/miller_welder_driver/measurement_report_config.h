@@ -73,6 +73,8 @@ public:
    * @return the writer again
    * @throw std::length_error if the buffer is too small for the header data
    */
+
+  // FIXME 
   virtual Writer& serialize(Writer& writer) const
   {
     EIP_UINT reserved = 0;
