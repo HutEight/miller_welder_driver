@@ -19,37 +19,23 @@ int main(int argc, char* argv[])
   try
   {
     const std::string HMS_QE_IP = "192.168.0.17";
+    const std::string PORT = "8888";
+
     // if (argc != 2)
     // {
     //   std::cerr << "Usage: client <host>" << std::endl;
     //   return 1;
     // }
 
-    // try
-    // {
-    //   os32c.open(host);
-    //   // RN_note void open(string hostname, string port = "44818", string io_port = "2222");
-    //   // 44818 & 2222 are standard dafaults
-    // }
-    // catch (std::runtime_error ex)
-    // {
-    //   ROS_FATAL_STREAM("Exception caught opening session: " << ex.what());
-    //   return -1;
-    // }
-
     boost::asio::io_service io_service;
 
     tcp::resolver resolver(io_service);
-        // std::cout << "RN_DEBUG 01." << std::endl << "tcp::resolver resolver(io_service);" << std::endl;
 
-    tcp::resolver::query query(HMS_QE_IP, "daytime");
-        // std::cout << "RN_DEBUG 02." << std::endl << "tcp::resolver::query query(HMS_QE_IP, );" << std::endl;
+    tcp::resolver::query query(HMS_QE_IP, PORT);
 
     tcp::resolver::iterator endpoint_iterator = resolver.resolve(query);
-        // std::cout << "RN_DEBUG 03." << std::endl << "tcp::resolver::iterator endpoint_iterator = resolver.resolve(query);" << std::endl;
 
     tcp::socket socket(io_service);
-        // std::cout << "RN_DEBUG 04." << std::endl << "tcp::socket socket(io_service);" << std::endl;
 
     boost::asio::connect(socket, endpoint_iterator);
         std::cout << "RN_DEBUG 05." << std::endl << "boost::asio::connect(socket, endpoint_iterator);" << std::endl;
@@ -69,18 +55,18 @@ int main(int argc, char* argv[])
       std::cout.write(buf.data(), len);
     }
   }
-  // catch (std::exception& e)
-  // {
-  //   std::cout << "Printing Error:" << std::endl;
-  //   std::cerr << e.what() << std::endl;
-  // }
-
-  catch (std::runtime_error ex)
+  catch (std::exception& e)
   {
-    std::cout << "RN: " << ex.what() << std::endl;
-    std::cerr << "RN2: " << ex.what() << std::endl;
-    return -1;
+    std::cout << "Printing Error:" << std::endl;
+    std::cerr << e.what() << std::endl;
   }
+
+  // catch (std::runtime_error ex)
+  // {
+  //   std::cout << "RN: " << ex.what() << std::endl;
+  //   std::cerr << "RN2: " << ex.what() << std::endl;
+  //   return -1;
+  // }
 
   return 0;
 }
