@@ -36,8 +36,8 @@ target_link_libraries(miller_welder_test_tcp
   ${Boost_LIBRARIES}
 )
 
-add_executable(boost_asio_test src/boost_asio_test.cpp)
-target_link_libraries(boost_asio_test
+add_executable(boost_asio_test_client src/boost_asio_test_client.cpp)
+target_link_libraries(boost_asio_test_client
   MillerWelder
   ${catkin_LIBRARIES}
   ${Boost_LIBRARIES}
