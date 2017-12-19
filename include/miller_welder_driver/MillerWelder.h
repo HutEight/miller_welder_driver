@@ -61,6 +61,24 @@ typedef enum
   CELL_STATE_4 = 13,
 } MILLER_OUTFLAG;
 
+// TEMO
+typedef enum
+{
+  NO_TOF_MEASUREMENTS       = 0,
+  RANGE_MEASURE_50M         = 1,
+  RANGE_MEASURE_32M_PZ      = 2,
+  RANGE_MEASURE_16M_WZ1PZ   = 3,
+  RANGE_MEASURE_8M_WZ2WZ1PZ = 4,
+  RANGE_MEASURE_TOF_4PS     = 5,
+} OS32C_RANGE_FORMAT;
+
+typedef enum
+{
+  NO_TOT_MEASUREMENTS               = 0,
+  REFLECTIVITY_MEASURE_TOT_ENCODED  = 1,
+  REFLECTIVITY_MEASURE_TOT_4PS      = 2,
+} OS32C_REFLECTIVITY_FORMAT;
+
 
 
 class MillerWelder : public Session
@@ -72,7 +90,7 @@ public:
 
   void startUDPIO();
   void sendMeasurmentReportConfigUDP();
-  MeasurementReport receiveMeasurementReportUDP();
+  // MeasurementReport receiveMeasurementReportUDP();
 
   void setAttribute_01(EIP_UINT attr_val);
   void setAttribute_02(EIP_UINT attr_val);
@@ -86,7 +104,7 @@ private:
   
   // data for sending to lidar to keep UDP session alive
   int connection_num_;
-  MeasurementReportConfig mrc_;
+  // MeasurementReportConfig mrc_;
   EIP_UDINT mrc_sequence_num_;
 
 };

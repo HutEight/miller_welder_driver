@@ -1,0 +1,7 @@
+<launch>
+  <arg name="host" default="192.168.1.1" />
+
+  <node pkg="miller_welder_driver" type="miller_welder_test_tcp" name="miller_welder_test_tcp" respawn="true">
+    <param name="host" value="$(arg host)" />
+  </node>
+</launch>

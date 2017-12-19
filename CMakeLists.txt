@@ -29,12 +29,20 @@ target_link_libraries(MillerWelder
   ${catkin_LIBRARIES}
 )
 
-add_executable(miller_welder_node src/miller_welder_node.cpp)
-target_link_libraries(miller_welder_node
+add_executable(miller_welder_test_tcp src/miller_welder_test_tcp.cpp)
+target_link_libraries(miller_welder_test_tcp
   MillerWelder
   ${catkin_LIBRARIES}
   ${Boost_LIBRARIES}
 )
+
+add_executable(boost_asio_test src/boost_asio_test.cpp)
+target_link_libraries(boost_asio_test
+  MillerWelder
+  ${catkin_LIBRARIES}
+  ${Boost_LIBRARIES}
+)
+
 
 ## Mark executables and libraries for installation
 install(TARGETS MillerWelder
