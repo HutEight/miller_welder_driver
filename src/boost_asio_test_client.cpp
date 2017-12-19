@@ -16,10 +16,20 @@ using boost::asio::ip::tcp;
 
 int main(int argc, char* argv[])
 {
+
+  std::cout << "\n\e[41m LONSBERRY ENGINEERING \e[0m" << std::endl << std::endl
+    << "    \e[4mTCP boost::asio TCP client test node\e[24m" << std::endl << std::endl;
+
+  bool try_daytime = 0;
+
+
   try
   {
-    const std::string HMS_QE_IP = "192.168.0.17";
-    const std::string PORT = "8888";
+    const std::string HMS_QE_IP = "192.168.1.51";
+    const std::string PORT = "44818";
+
+    // ROS_INFO("Trying to connect to 192.168.1.51:44818"); 
+    std::cout << "* Trying to connect to 192.168.1.51:44818" << std::endl;
 
     // if (argc != 2)
     // {
@@ -38,22 +48,28 @@ int main(int argc, char* argv[])
     tcp::socket socket(io_service);
 
     boost::asio::connect(socket, endpoint_iterator);
-        std::cout << "RN_DEBUG 05." << std::endl << "boost::asio::connect(socket, endpoint_iterator);" << std::endl;
+        
+    std::cout << "\n  \e[1mConnection is SUCCESSFUL!\e[0m \n\n";
 
-    for (;;)
-    {
-      boost::array<char, 128> buf;
-      boost::system::error_code error;
+    if (try_daytime)
+    { 
+      for (;;)
+      {
+        boost::array<char, 128> buf;
+        boost::system::error_code error;
 
-      size_t len = socket.read_some(boost::asio::buffer(buf), error);
+        size_t len = socket.read_some(boost::asio::buffer(buf), error);
 
-      if (error == boost::asio::error::eof)
-        break; // Connection closed cleanly by peer.
-      else if (error)
-        throw boost::system::system_error(error); // Some other error.
+        if (error == boost::asio::error::eof)
+          break; // Connection closed cleanly by peer.
+        else if (error)
+          throw boost::system::system_error(error); // Some other error.
 
-      std::cout.write(buf.data(), len);
+        std::cout.write(buf.data(), len);
+      }
     }
+
+
   }
   catch (std::exception& e)
   {

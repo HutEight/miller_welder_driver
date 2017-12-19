@@ -1,80 +1,83 @@
 
 
 [41m LONSBERRY ENGINEERING [0m
-Tue 19 Dec 09:09:42 EST 2017
+Tue Dec 19 10:34:31 EST 2017
 
   [4mTCP PORT FINDER[0m
 
 
+  Searching Host 192.168.1.55
+
+
 Trying port 1: 
 
-Starting Nmap 7.01 ( https://nmap.org ) at 2017-12-19 09:09 EST
-Nmap scan report for 192.168.0.17
-Host is up (0.0030s latency).
+Starting Nmap 7.01 ( https://nmap.org ) at 2017-12-19 10:34 EST
+Nmap scan report for 192.168.1.55
+Host is up (0.0012s latency).
 PORT  STATE  SERVICE
 1/tcp closed tcpmux
 
-Nmap done: 1 IP address (1 host up) scanned in 0.05 seconds
+Nmap done: 1 IP address (1 host up) scanned in 13.02 seconds
 Trying port 2: 
 
-Starting Nmap 7.01 ( https://nmap.org ) at 2017-12-19 09:09 EST
-Nmap scan report for 192.168.0.17
-Host is up (0.0033s latency).
+Starting Nmap 7.01 ( https://nmap.org ) at 2017-12-19 10:34 EST
+Nmap scan report for 192.168.1.55
+Host is up (0.00083s latency).
 PORT  STATE  SERVICE
 2/tcp closed compressnet
 
-Nmap done: 1 IP address (1 host up) scanned in 0.05 seconds
+Nmap done: 1 IP address (1 host up) scanned in 13.02 seconds
 Trying port 3: 
 
-Starting Nmap 7.01 ( https://nmap.org ) at 2017-12-19 09:09 EST
-Nmap scan report for 192.168.0.17
-Host is up (0.0038s latency).
+Starting Nmap 7.01 ( https://nmap.org ) at 2017-12-19 10:35 EST
+Nmap scan report for 192.168.1.55
+Host is up (0.00090s latency).
 PORT  STATE  SERVICE
 3/tcp closed compressnet
 
-Nmap done: 1 IP address (1 host up) scanned in 0.05 seconds
+Nmap done: 1 IP address (1 host up) scanned in 13.02 seconds
 Trying port 4: 
 
-Starting Nmap 7.01 ( https://nmap.org ) at 2017-12-19 09:09 EST
-Nmap scan report for 192.168.0.17
-Host is up (0.0033s latency).
+Starting Nmap 7.01 ( https://nmap.org ) at 2017-12-19 10:35 EST
+Nmap scan report for 192.168.1.55
+Host is up (0.00082s latency).
 PORT  STATE  SERVICE
 4/tcp closed unknown
 
-Nmap done: 1 IP address (1 host up) scanned in 0.05 seconds
+Nmap done: 1 IP address (1 host up) scanned in 13.02 seconds
 Trying port 5: 
 
-Starting Nmap 7.01 ( https://nmap.org ) at 2017-12-19 09:09 EST
-Nmap scan report for 192.168.0.17
-Host is up (0.0033s latency).
+Starting Nmap 7.01 ( https://nmap.org ) at 2017-12-19 10:35 EST
+Nmap scan report for 192.168.1.55
+Host is up (0.00080s latency).
 PORT  STATE  SERVICE
 5/tcp closed unknown
 
-Nmap done: 1 IP address (1 host up) scanned in 0.05 seconds
+Nmap done: 1 IP address (1 host up) scanned in 13.02 seconds
 Trying port 6: 
 
-Starting Nmap 7.01 ( https://nmap.org ) at 2017-12-19 09:09 EST
-Nmap scan report for 192.168.0.17
-Host is up (0.0029s latency).
+Starting Nmap 7.01 ( https://nmap.org ) at 2017-12-19 10:35 EST
+Nmap scan report for 192.168.1.55
+Host is up (0.00095s latency).
 PORT  STATE  SERVICE
 6/tcp closed unknown
 
-Nmap done: 1 IP address (1 host up) scanned in 0.05 seconds
+Nmap done: 1 IP address (1 host up) scanned in 13.02 seconds
 Trying port 7: 
 
-Starting Nmap 7.01 ( https://nmap.org ) at 2017-12-19 09:09 EST
-Nmap scan report for 192.168.0.17
-Host is up (0.0027s latency).
+Starting Nmap 7.01 ( https://nmap.org ) at 2017-12-19 10:35 EST
+Nmap scan report for 192.168.1.55
+Host is up (0.00079s latency).
 PORT  STATE  SERVICE
 7/tcp closed echo
 
-Nmap done: 1 IP address (1 host up) scanned in 0.05 seconds
+Nmap done: 1 IP address (1 host up) scanned in 13.02 seconds
 Trying port 8: 
 
-Starting Nmap 7.01 ( https://nmap.org ) at 2017-12-19 09:09 EST
-Nmap scan report for 192.168.0.17
-Host is up (0.0030s latency).
+Starting Nmap 7.01 ( https://nmap.org ) at 2017-12-19 10:36 EST
+Nmap scan report for 192.168.1.55
+Host is up (0.00093s latency).
 PORT  STATE  SERVICE
 8/tcp closed unknown
 
-Nmap done: 1 IP address (1 host up) scanned in 0.05 seconds
+Nmap done: 1 IP address (1 host up) scanned in 13.02 seconds

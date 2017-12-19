@@ -25,8 +25,8 @@ int main(int argc, char *argv[])
   string frame_id;
   // ros::param::param<std::string>("~host", host, "192.168.1.1"); // TODO
   // ros::param::param<std::string>("~frame_id", frame_id, "laser");
-  host = "192.168.1.55";
-  ROS_WARN("Using host name 192.168.1.55 \n Modify if you change the ip settings.");
+  host = "192.168.1.51";
+  ROS_WARN("Using host name 192.168.1.51 \n Modify if you change the ip settings.");
   boost::asio::io_service io_service;
 
   shared_ptr<TCPSocket> socket = shared_ptr<TCPSocket>(new TCPSocket(io_service));
@@ -41,8 +41,8 @@ int main(int argc, char *argv[])
     millerWelder.open(host);
 
   }
-  // catch (std::runtime_error ex)
-  catch (std::exception ex)
+  catch (std::runtime_error ex)
+  // catch (std::exception ex)
   {
     ROS_FATAL_STREAM("Exception caught opening session: " << ex.what());
     return -1;
@@ -51,17 +51,17 @@ int main(int argc, char *argv[])
   ROS_INFO("TCP connection establshed through PORT 0xAF12..");
   
   // FIXME
-  try
-  {
-    millerWelder.setAttribute_01(RANGE_MEASURE_50M);
-    millerWelder.setAttribute_02(REFLECTIVITY_MEASURE_TOT_4PS);
-    // millerWelder.setAttribute_03(start_angle, end_angle);
-  }
-  catch (std::invalid_argument ex)
-  {
-    ROS_FATAL_STREAM("Invalid arguments in sensor configuration: " << ex.what());
-    return -1;
-  }
+  // try
+  // {
+  //   millerWelder.setAttribute_01(RANGE_MEASURE_50M);
+  //   millerWelder.setAttribute_02(REFLECTIVITY_MEASURE_TOT_4PS);
+  //   // millerWelder.setAttribute_03(start_angle, end_angle);
+  // }
+  // catch (std::invalid_argument ex)
+  // {
+  //   ROS_FATAL_STREAM("Invalid arguments in sensor configuration: " << ex.what());
+  //   return -1;
+  // }
 
 
   // try

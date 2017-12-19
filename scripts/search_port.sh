@@ -22,7 +22,8 @@
 
 echo -e "\n\n${LONSBERRY_ENGINEERING}"
 date
-echo -e "\n  ${Underlined_t}TCP PORT FINDER${RS}\n\n"
+echo -e "\n  ${Underlined_t}TCP PORT FINDER${RS}\n"
+echo -e "\n  Searching Host 192.168.1.55\n\n"
 
 read -p "    Press enter to continue";
 
@@ -30,7 +31,7 @@ read -p "    Press enter to continue";
 for port_id in {1..8}
 do
 	echo "Trying port ${port_id}: "
-	nmap -p ${port_id} 192.168.0.17
+	nmap -p ${port_id} 192.168.1.55
 done
 
 
