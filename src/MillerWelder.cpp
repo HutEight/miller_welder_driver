@@ -61,6 +61,11 @@ void MillerWelder::setAttribute03WeldId(EIP_UINT new_weld_id)
   attribute_03_.weld_id = new_weld_id;
 }
 
+void MillerWelder::resetAll()
+{
+  attribute_03_.resetAll();
+}
+
 void MillerWelder::sendAttribute03(EIP_USINT class_id, EIP_USINT instance_id, EIP_USINT attribute_id)
 {
   shared_ptr<AssemblyOutputInstanceAttribute03> data =
@@ -75,11 +80,11 @@ void MillerWelder::sendAttribute03(EIP_USINT class_id, EIP_USINT instance_id, EI
 
 
 
-EIP_UINT MillerWelder::getAttribute_01()
-{
-  // mrc_.reflectivity_report_format = getSingleAttribute(0x73, 1, 5, (EIP_UINT)0); // FIXME
-  // return mrc_.reflectivity_report_format;
-}
+// EIP_UINT MillerWelder::getAttribute_01()
+// {
+//   // mrc_.reflectivity_report_format = getSingleAttribute(0x73, 1, 5, (EIP_UINT)0); // FIXME
+//   // return mrc_.reflectivity_report_format;
+// }
 
 
 } // namespace miller_welder_driver

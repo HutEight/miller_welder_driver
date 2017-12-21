@@ -26,13 +26,13 @@ int main(int argc, char *argv[])
   // ros::param::param<std::string>("~host", host, "192.168.1.1"); // TODO
   // ros::param::param<std::string>("~frame_id", frame_id, "laser");
   host = "192.168.1.51";
-  ROS_WARN("Using host name 192.168.1.51 \n Modify if you change the ip settings.");
+  ROS_WARN("Using host name 192.168.1.51 \n Modify if you change the ip settings. \n ");
   boost::asio::io_service io_service;
 
   shared_ptr<TCPSocket> socket = shared_ptr<TCPSocket>(new TCPSocket(io_service));
-  ROS_WARN("Expecting TCP port 44818..");
+  ROS_WARN("Expecting TCP port 44818.. \n ");
   shared_ptr<UDPSocket> io_socket = shared_ptr<UDPSocket>(new UDPSocket(io_service, 2222));
-  ROS_WARN("Expecting UDP port 2222..");
+  ROS_WARN("Expecting UDP port 2222.. \n ");
   MillerWelder millerWelder(socket, io_socket);
 
   try
@@ -45,24 +45,28 @@ int main(int argc, char *argv[])
     ROS_FATAL_STREAM("Exception caught opening session: " << ex.what());
     return -1;
   }
-  ROS_INFO("TCP connection establshed through PORT 0xAF12..");
+  ROS_INFO("TCP connection establshed through PORT 0xAF12.. \n ");
+
+
+  millerWelder.resetAll();
 
   // FIXME may need to change error types for the sets
   try
   {
-    millerWelder.setAttribute03OutputFlag(0x0002);
+    millerWelder.setAttribute03OutputFlag(0x0204);
   }
-  catch (std::runtime_error ex)
+  catch (std::invalid_argument ex)
   // catch (std::exception ex)
   {
     ROS_FATAL_STREAM("Exception caught setting output flags: " << ex.what());
     return -1;
   }
-  ROS_INFO("Output flags set -- 0000 0000 0000 0010 (0x0002)");
-
+  // ROS_INFO("Output flags set 0x0002 -- 0000 0000 0000 0010 (0x0002) \n ");
+  ROS_INFO("Output flags set 0x0002 -- 0000 0010 0000 0010 (0x0204) \n ");
+  
   try
   {
-    millerWelder.setAttribute03WireFeedSpeedCmd(2);
+    millerWelder.setAttribute03WireFeedSpeedCmd(10);
   }
   catch (std::runtime_error ex)
   // catch (std::exception ex)
@@ -70,13 +74,28 @@ int main(int argc, char *argv[])
     ROS_FATAL_STREAM("Exception caught setting wire feed speed cmd: " << ex.what());
     return -1;
   }
-  ROS_INFO("Wire feed speed cmd set -- 2 (inches/minute)");
+  ROS_INFO("Wire feed speed cmd set -- 10 (inches/minute) \n ");
+
+
+  try
+  {
+    millerWelder.setAttribute03PartIdAndStartOrEnd(10000);
+  }
+  catch (std::runtime_error ex)
+  // catch (std::exception ex)
+  {
+    ROS_FATAL_STREAM("Exception caught setting wire feed speed cmd: " << ex.what());
+    return -1;
+  }
+  ROS_INFO("setAttribute03PartIdAndStartOrEnd cmd set -- 10000 \n ");
+
+  // millerWelder.resetAll();
 
   try
   {
     millerWelder.sendAttribute03(0x4, 112, 3);
   }
-  catch (std::runtime_error ex)
+  catch (std::invalid_argument ex)
   // catch (std::exception ex)
   {
     ROS_FATAL_STREAM("Exception caught sending the set cmds: " << ex.what());
@@ -88,7 +107,7 @@ int main(int argc, char *argv[])
 
   while (ros::ok())
   {
-	   ROS_INFO("hello2");
+	   // ROS_INFO("hello2");
   }
 
   return 0;

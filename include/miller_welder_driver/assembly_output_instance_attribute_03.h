@@ -85,7 +85,7 @@ public:
       writer.write(weld_list_number);
       writer.write(part_id_and_start_or_end);
       writer.write(weld_id);
-      writer.write(reserved);
+      writer.write(reserved); // reserved
       writer.write(reserved);
       writer.write(reserved);
       writer.write(reserved);

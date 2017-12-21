@@ -98,9 +98,9 @@ public:
   // void setAttribute_02(EIP_UINT attr_val);
   // void setAttribute_03(EIP_UINT attr_val);
 
-  EIP_UINT getAttribute_01();
-  EIP_UINT getAttribute_02();
-  EIP_UINT getAttribute_03();
+  // EIP_UINT getAttribute_01();
+  // EIP_UINT getAttribute_02();
+  // EIP_UINT getAttribute_03();
 
   void setAttribute03OutputFlag(EIP_UINT new_output_flags);
   void setAttribute03WireFeedSpeedCmd(EIP_UINT new_wire_feed_speed_cmd);
@@ -109,7 +109,11 @@ public:
   void setAttribute03PartIdAndStartOrEnd(EIP_UINT new_part_id_and_start_or_end);
   void setAttribute03WeldId(EIP_UINT new_weld_id);
 
+  void resetAll();
+
   void sendAttribute03(EIP_USINT class_id, EIP_USINT instance_id, EIP_USINT attribute_id);
+
+  EIP_UINT getAttribute03OutputFlag();
 
 private:
 
