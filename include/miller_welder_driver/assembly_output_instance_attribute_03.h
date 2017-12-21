@@ -60,9 +60,9 @@ public:
 
     EIP_UINT weld_id;
 
-    AssemblyOutputInstanceAttribute03() : output_flags(0), wire_feed_speed_cmd(0)
-      arc_length_or_voltage_cmd(0), inductance_or_sharp_arc_cmd(0),
-      weld_list_number(0), weld_list_number(0)
+    AssemblyOutputInstanceAttribute03() : output_flags(0),
+      wire_feed_speed_cmd(0), arc_length_or_voltage_cmd(0),
+      inductance_or_sharp_arc_cmd(0),weld_list_number(0)
     {
       std::cout << "RN_DEBUG: contructing a attribute format" << std::endl;
     }
@@ -111,6 +111,18 @@ public:
       reader.read(weld_id);
       reader.skip(14);
       return reader;
+    }
+
+    virtual void resetAll()
+    {
+      std::cout << "Resetting the attribute to all 0s." << std::endl;
+      output_flags = 0;
+      wire_feed_speed_cmd = 0;
+      arc_length_or_voltage_cmd = 0;
+      inductance_or_sharp_arc_cmd = 0;
+      weld_list_number = 0;
+      part_id_and_start_or_end = 0;
+      weld_id = 0;
     }
 
 };

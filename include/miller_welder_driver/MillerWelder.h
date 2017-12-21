@@ -18,6 +18,8 @@
 #include "odva_ethernetip/sequenced_address_item.h"
 #include "odva_ethernetip/sequenced_data_item.h"
 
+#include "miller_welder_driver/assembly_output_instance_attribute_03.h"
+
 // #include Data structure
 
 using std::vector;
@@ -92,20 +94,29 @@ public:
   void sendMeasurmentReportConfigUDP();
   // MeasurementReport receiveMeasurementReportUDP();
 
-  void setAttribute_01(EIP_UINT attr_val);
-  void setAttribute_02(EIP_UINT attr_val);
-  void setAttribute_03(EIP_UINT attr_val);
+  // void setAttribute_01(EIP_UINT attr_val);
+  // void setAttribute_02(EIP_UINT attr_val);
+  // void setAttribute_03(EIP_UINT attr_val);
 
   EIP_UINT getAttribute_01();
   EIP_UINT getAttribute_02();
   EIP_UINT getAttribute_03();
 
+  void setAttribute03OutputFlag(EIP_UINT new_output_flags);
+  void setAttribute03WireFeedSpeedCmd(EIP_UINT new_wire_feed_speed_cmd);
+  void setAttribute03ArcLengthOrVoltageCmd(EIP_UINT new_arc_length_or_voltage_cmd);
+  void setAttribute03WeldListNumber(EIP_UINT new_weld_list_number);
+  void setAttribute03PartIdAndStartOrEnd(EIP_UINT new_part_id_and_start_or_end);
+  void setAttribute03WeldId(EIP_UINT new_weld_id);
+
+  void sendAttribute03(EIP_USINT class_id, EIP_USINT instance_id, EIP_USINT attribute_id);
+
 private:
-  
+
   // data for sending to lidar to keep UDP session alive
   int connection_num_;
-  // MeasurementReportConfig mrc_;
-  EIP_UDINT mrc_sequence_num_;
+
+  AssemblyOutputInstanceAttribute03 attribute_03_;
 
 };
 

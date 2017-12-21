@@ -37,9 +37,7 @@ int main(int argc, char *argv[])
 
   try
   {
-
     millerWelder.open(host);
-
   }
   catch (std::runtime_error ex)
   // catch (std::exception ex)
@@ -47,43 +45,51 @@ int main(int argc, char *argv[])
     ROS_FATAL_STREAM("Exception caught opening session: " << ex.what());
     return -1;
   }
-
   ROS_INFO("TCP connection establshed through PORT 0xAF12..");
-  
-  // FIXME
-  // try
-  // {
-  //   millerWelder.setAttribute_01(RANGE_MEASURE_50M);
-  //   millerWelder.setAttribute_02(REFLECTIVITY_MEASURE_TOT_4PS);
-  //   // millerWelder.setAttribute_03(start_angle, end_angle);
-  // }
-  // catch (std::invalid_argument ex)
-  // {
-  //   ROS_FATAL_STREAM("Invalid arguments in sensor configuration: " << ex.what());
-  //   return -1;
-  // }
 
+  // FIXME may need to change error types for the sets
+  try
+  {
+    millerWelder.setAttribute03OutputFlag(0x0002);
+  }
+  catch (std::runtime_error ex)
+  // catch (std::exception ex)
+  {
+    ROS_FATAL_STREAM("Exception caught setting output flags: " << ex.what());
+    return -1;
+  }
+  ROS_INFO("Output flags set -- 0000 0000 0000 0010 (0x0002)");
 
-  // try
-  // {
-  //   millerWelder.startUDPIO();
-  //   millerWelder.sendMeasurmentReportConfigUDP();
-  // }
-  // catch (std::logic_error ex)
-  // {
-  //   ROS_FATAL_STREAM("Could not start UDP IO: " << ex.what());
-  //   return -1;
-  // }
+  try
+  {
+    millerWelder.setAttribute03WireFeedSpeedCmd(2);
+  }
+  catch (std::runtime_error ex)
+  // catch (std::exception ex)
+  {
+    ROS_FATAL_STREAM("Exception caught setting wire feed speed cmd: " << ex.what());
+    return -1;
+  }
+  ROS_INFO("Wire feed speed cmd set -- 2 (inches/minute)");
 
-  // int ctr = 10;
+  try
+  {
+    millerWelder.sendAttribute03(0x4, 112, 3);
+  }
+  catch (std::runtime_error ex)
+  // catch (std::exception ex)
+  {
+    ROS_FATAL_STREAM("Exception caught sending the set cmds: " << ex.what());
+    return -1;
+  }
+  ROS_INFO("Set cmds sent!");
+
 
 
   while (ros::ok())
   {
-
-	ROS_INFO("hello2");
-
-
+	   ROS_INFO("hello2");
   }
+
   return 0;
 }

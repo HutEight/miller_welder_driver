@@ -17,6 +17,7 @@ using eip::SequencedDataItem;
 
 namespace miller_welder_driver {
 
+// FIXME
 void MillerWelder::startUDPIO()
 {
   EIP_CONNECTION_INFO_T o_to_t, t_to_o;
@@ -30,26 +31,49 @@ void MillerWelder::startUDPIO()
   connection_num_ = createConnection(o_to_t, t_to_o);
 }
 
-void MillerWelder::setAttribute_01(EIP_UINT attr_val)
+void MillerWelder::setAttribute03OutputFlag(EIP_UINT new_output_flags)
 {
-  setSingleAttribute(0x73, 1, 4, attr_val); // FIXME
-  // mrc_.range_report_format = attr_val;
-
+  attribute_03_.output_flags = new_output_flags;
 }
 
-void MillerWelder::setAttribute_02(EIP_UINT attr_val)
+void MillerWelder::setAttribute03WireFeedSpeedCmd(EIP_UINT new_wire_feed_speed_cmd)
 {
-  setSingleAttribute(0x73, 1, 5, attr_val); // FIXME
-  // mrc_.range_report_format = attr_val;
-
+  attribute_03_.wire_feed_speed_cmd = new_wire_feed_speed_cmd;
 }
 
-void MillerWelder::setAttribute_03(EIP_UINT attr_val)
+void MillerWelder::setAttribute03ArcLengthOrVoltageCmd(EIP_UINT new_arc_length_or_voltage_cmd)
 {
-  setSingleAttribute(0x73, 1, 6, attr_val); // FIXME
-  // mrc_.range_report_format = attr_val;
-
+  attribute_03_.arc_length_or_voltage_cmd = new_arc_length_or_voltage_cmd;
 }
+
+void MillerWelder::setAttribute03WeldListNumber(EIP_UINT new_weld_list_number)
+{
+  attribute_03_.weld_list_number = new_weld_list_number;
+}
+
+void MillerWelder::setAttribute03PartIdAndStartOrEnd(EIP_UINT new_part_id_and_start_or_end)
+{
+  attribute_03_.part_id_and_start_or_end = new_part_id_and_start_or_end;
+}
+
+void MillerWelder::setAttribute03WeldId(EIP_UINT new_weld_id)
+{
+  attribute_03_.weld_id = new_weld_id;
+}
+
+void MillerWelder::sendAttribute03(EIP_USINT class_id, EIP_USINT instance_id, EIP_USINT attribute_id)
+{
+  shared_ptr<AssemblyOutputInstanceAttribute03> data =
+    make_shared<AssemblyOutputInstanceAttribute03>();
+  *data = attribute_03_;
+  // RRDataResponse resp_data = sendRRDataCommand(0x10,
+  //   eip::Path(class_id, instance_id, attribute_id), data);
+  setSingleAttributeSerializable(class_id, instance_id, attribute_id, data);
+}
+
+
+
+
 
 EIP_UINT MillerWelder::getAttribute_01()
 {
