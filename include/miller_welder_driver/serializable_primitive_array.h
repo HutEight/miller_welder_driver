@@ -12,7 +12,7 @@ template <typename T>
 class SerializablePrimitiveArray : public Serializable
 {
 public:
-  
+
   T data[];
   int data_size;
 
