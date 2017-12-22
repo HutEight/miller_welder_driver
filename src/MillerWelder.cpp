@@ -67,6 +67,7 @@ void MillerWelder::resetAll()
 }
 
 void MillerWelder::sendAttribute03(EIP_USINT class_id, EIP_USINT instance_id, EIP_USINT attribute_id)
+// 0x4, 112, 3
 {
   shared_ptr<AssemblyOutputInstanceAttribute03> data =
     make_shared<AssemblyOutputInstanceAttribute03>();
@@ -76,6 +77,73 @@ void MillerWelder::sendAttribute03(EIP_USINT class_id, EIP_USINT instance_id, EI
   setSingleAttributeSerializable(class_id, instance_id, attribute_id, data);
 }
 
+EIP_UINT MillerWelder::getAttribute03OutputFlag()
+{
+  AssemblyOutputInstanceAttribute03 attribute_03;
+
+  // attribute_03.resetAll();
+  getSingleAttributeSerializable(0x4, 112, 3, attribute_03);
+
+  cout << endl << "\e[34m attribute_03.output_flags: \033[0m" << attribute_03.output_flags << endl
+    << "\e[34m attribute_03.wire_feed_speed_cmd: \033[0m" << attribute_03.wire_feed_speed_cmd << endl
+    << "\e[34m attribute_03.arc_length_or_voltage_cmd: \033[0m" << attribute_03.arc_length_or_voltage_cmd << endl
+    << "\e[34m attribute_03.inductance_or_sharp_arc_cmd: \033[0m" << attribute_03.inductance_or_sharp_arc_cmd << endl
+    << "\e[34m attribute_03.weld_list_number: \033[0m" << attribute_03.weld_list_number << endl
+    << "\e[34m attribute_03.part_id_and_start_or_end: \033[0m" << attribute_03.part_id_and_start_or_end << endl
+    << "\e[34m attribute_03.weld_id: \033[0m" << attribute_03.weld_id << endl;
+
+  return attribute_03.output_flags;
+}
+
+EIP_UINT MillerWelder::getTcpObjectRevision()
+{
+
+  EIP_UINT TCP_object_revision = getSingleAttribute(0xF5, 0, 1, (EIP_UINT)0);
+  cout << "TCP_object_revision: " << TCP_object_revision << endl;
+}
+
+void MillerWelder::getTcpOjbectInstance01Attribute05()
+{
+  TcpObjectInstance01Attribute05 get_result;
+  getSingleAttributeSerializable(0xF5, 1, 5, get_result);
+  cout << endl << "TcpOjbectInstance01Attribute05.IP_address: " << get_result.IP_address << endl
+    << "TcpOjbectInstance01Attribute05.Network_mask: " << get_result.Network_mask << endl;
+
+}
+
+void MillerWelder::getIdentityObjectInstance01()
+{
+  EIP_UINT result;
+  result = getSingleAttribute(0x01, 1, 1, (EIP_UINT)0);
+  cout << endl << "\e[32mIdentityObjectInstance01-VenderNumber:\033[0m " << result << endl;
+  result = getSingleAttribute(0x01, 1, 2, (EIP_UINT)0);
+  cout << endl << "\e[32mIdentityObjectInstance01-DeviceType:\033[0m " << result << endl;  
+}
+
+void MillerWelder::getAssemblyInputInstanceAttribute03()
+{ 
+  cout << "RN_DEBUG" << endl;
+  AssemblyInputInstanceAttribute03 get_result;
+  getSingleAttributeSerializable(0x04, 100, 3, get_result);
+  cout << endl << "AssemblyInputInstanceAttribute03.input_flags: " << get_result.input_flags << endl
+    << "AssemblyInputInstanceAttribute03.actual_wire_feed_speed: " << get_result.actual_wire_feed_speed << endl
+    << "AssemblyInputInstanceAttribute03.actual_arc_current: " << get_result.actual_arc_current << endl
+    << "AssemblyInputInstanceAttribute03.acutal_arc_voltage: " << get_result.acutal_arc_voltage << endl
+    << "AssemblyInputInstanceAttribute03.error_type: " << get_result.error_type << endl;
+
+}
+
+void MillerWelder::printSetAttribute()
+{
+    // cout << endl << "\e[34m attribute_03_.output_flags: \033[0m" << attribute_03_.output_flags << endl
+    // << "\e[34m attribute_03_.wire_feed_speed_cmd: \033[0m" << attribute_03_.wire_feed_speed_cmd << endl
+    // << "\e[34m attribute_03_.arc_length_or_voltage_cmd: \033[0m" << attribute_03_.arc_length_or_voltage_cmd << endl
+    // << "\e[34m attribute_03_.inductance_or_sharp_arc_cmd: \033[0m" << attribute_03_.inductance_or_sharp_arc_cmd << endl
+    // << "\e[34m attribute_03_.weld_list_number: \033[0m" << attribute_03_.weld_list_number << endl
+    // << "\e[34m attribute_03_.part_id_and_start_or_end: \033[0m" << attribute_03_.part_id_and_start_or_end << endl
+    // << "\e[34m attribute_03_.weld_id: \033[0m" << attribute_03_.weld_id << endl;
+
+}
 
 
 

@@ -19,6 +19,8 @@
 #include "odva_ethernetip/sequenced_data_item.h"
 
 #include "miller_welder_driver/assembly_output_instance_attribute_03.h"
+#include "miller_welder_driver/assembly_input_instance_attribute_03.h"
+#include "miller_welder_driver/tcp_object_instance_01_attribute_05.h"
 
 // #include Data structure
 
@@ -114,6 +116,16 @@ public:
   void sendAttribute03(EIP_USINT class_id, EIP_USINT instance_id, EIP_USINT attribute_id);
 
   EIP_UINT getAttribute03OutputFlag();
+
+  EIP_UINT getTcpObjectRevision();
+
+  void getTcpOjbectInstance01Attribute05();
+
+  void getAssemblyInputInstanceAttribute03();
+
+  void getIdentityObjectInstance01();
+
+  void printSetAttribute();
 
 private:
 

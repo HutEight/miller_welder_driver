@@ -48,12 +48,13 @@ int main(int argc, char *argv[])
   ROS_INFO("TCP connection establshed through PORT 0xAF12.. \n ");
 
 
-  millerWelder.resetAll();
+  // millerWelder.resetAll();
 
   // FIXME may need to change error types for the sets
   try
   {
     millerWelder.setAttribute03OutputFlag(0x0204);
+  	// millerWelder.setAttribute03OutputFlag(0xFFFF);
   }
   catch (std::invalid_argument ex)
   // catch (std::exception ex)
@@ -91,6 +92,9 @@ int main(int argc, char *argv[])
 
   // millerWelder.resetAll();
 
+  cout << "Sending the settings--" << endl;
+  millerWelder.printSetAttribute();
+
   try
   {
     millerWelder.sendAttribute03(0x4, 112, 3);
@@ -103,7 +107,17 @@ int main(int argc, char *argv[])
   }
   ROS_INFO("Set cmds sent!");
 
+  EIP_UINT outputflag_get = millerWelder.getAttribute03OutputFlag();
 
+  cout << endl << "outputflag_get: " << outputflag_get << endl;
+
+  EIP_UINT object_revision = millerWelder.getTcpObjectRevision();
+
+  millerWelder.getTcpOjbectInstance01Attribute05();
+
+  millerWelder.getIdentityObjectInstance01();
+
+  millerWelder.getAssemblyInputInstanceAttribute03();
 
   while (ros::ok())
   {

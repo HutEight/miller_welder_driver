@@ -60,9 +60,9 @@ public:
 
     EIP_UINT weld_id;
 
-    AssemblyOutputInstanceAttribute03() : output_flags(0),
-      wire_feed_speed_cmd(0), arc_length_or_voltage_cmd(0),
-      inductance_or_sharp_arc_cmd(0),weld_list_number(0)
+    AssemblyOutputInstanceAttribute03() : output_flags(1),
+      wire_feed_speed_cmd(2), arc_length_or_voltage_cmd(3),
+      inductance_or_sharp_arc_cmd(4),weld_list_number(5)
     {
       std::cout << "RN_DEBUG: contructing a attribute format" << std::endl;
     }
@@ -127,5 +127,5 @@ public:
 
 };
 
-} // namespace omron_os32c_driver
+} // namespace miller_welder_driver 
 #endif // ASSEMBLY_OUTPUT_INSTANCE_ATTRIBUTE_3_H
