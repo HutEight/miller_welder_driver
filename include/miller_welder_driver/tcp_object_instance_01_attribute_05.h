@@ -61,9 +61,9 @@ public:
   {
     reader.read(IP_address);
     reader.read(Network_mask);
-    // reader.read(Gateway_address);
-    // reader.read(Name_server);
-    // reader.read(Name_server_2);
+    reader.read(Gateway_address);
+    reader.read(Name_server);
+    reader.read(Name_server_2);
     // reader.read(Domain_name_size);
     // reader.read(Domain_name);
 

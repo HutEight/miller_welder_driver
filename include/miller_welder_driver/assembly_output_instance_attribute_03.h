@@ -60,9 +60,12 @@ public:
 
     EIP_UINT weld_id;
 
+    EIP_UINT word_7, word_8, word_9, word_10, word_11, word_12, word_13;
+
     AssemblyOutputInstanceAttribute03() : output_flags(1),
       wire_feed_speed_cmd(2), arc_length_or_voltage_cmd(3),
-      inductance_or_sharp_arc_cmd(4),weld_list_number(5)
+      inductance_or_sharp_arc_cmd(4),weld_list_number(5),
+      word_7(0), word_8(0), word_9(0), word_10(0), word_11(0), word_12(0), word_13(0)
     {
       std::cout << "RN_DEBUG: contructing a attribute format" << std::endl;
     }
@@ -109,7 +112,16 @@ public:
       reader.read(weld_list_number);
       reader.read(part_id_and_start_or_end);
       reader.read(weld_id);
-      reader.skip(14);
+      // reader.skip(14);
+
+      reader.read(word_7);
+      reader.read(word_8);
+      reader.read(word_9);
+      reader.read(word_10);
+      reader.read(word_11);
+      reader.read(word_12);
+      reader.read(word_13);
+
       return reader;
     }
 
@@ -123,6 +135,13 @@ public:
       weld_list_number = 0;
       part_id_and_start_or_end = 0;
       weld_id = 0;
+      word_7 = 0;
+      word_8 = 0;
+      word_9 = 0;
+      word_10 = 0;
+      word_11 = 0;
+      word_12 = 0;
+      word_13 = 0;
     }
 
 };

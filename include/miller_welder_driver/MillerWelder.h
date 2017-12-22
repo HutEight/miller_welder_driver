@@ -127,6 +127,10 @@ public:
 
   void printSetAttribute();
 
+  void getAssemblyOutputInstanceAttribute02();
+
+  void setgetIdentityObjectInstance01();
+
 private:
 
   // data for sending to lidar to keep UDP session alive

@@ -29,6 +29,8 @@ public:
 
     EIP_UINT error_type;
 
+    // EIP_UINT whatever;
+
     // EIP_UINT part_id_and_start_or_end;
 
     // EIP_UINT weld_id;
@@ -80,7 +82,7 @@ public:
       reader.read(actual_arc_current);
       reader.read(acutal_arc_voltage);
       reader.read(error_type);
-      // reader.read(part_id_and_start_or_end);
+      // reader.read(whatever);
       // reader.read(weld_id);
       // reader.skip(14);
       return reader;

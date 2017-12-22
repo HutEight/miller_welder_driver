@@ -48,13 +48,13 @@ int main(int argc, char *argv[])
   ROS_INFO("TCP connection establshed through PORT 0xAF12.. \n ");
 
 
-  // millerWelder.resetAll();
+  millerWelder.resetAll();
 
   // FIXME may need to change error types for the sets
   try
   {
-    millerWelder.setAttribute03OutputFlag(0x0204);
-  	// millerWelder.setAttribute03OutputFlag(0xFFFF);
+    // millerWelder.setAttribute03OutputFlag(0x0204);
+  	millerWelder.setAttribute03OutputFlag(0xFFFF);
   }
   catch (std::invalid_argument ex)
   // catch (std::exception ex)
@@ -67,7 +67,8 @@ int main(int argc, char *argv[])
   
   try
   {
-    millerWelder.setAttribute03WireFeedSpeedCmd(10);
+    // millerWelder.setAttribute03WireFeedSpeedCmd(10);
+    millerWelder.setAttribute03WireFeedSpeedCmd(0xFFFF);
   }
   catch (std::runtime_error ex)
   // catch (std::exception ex)
@@ -80,7 +81,8 @@ int main(int argc, char *argv[])
 
   try
   {
-    millerWelder.setAttribute03PartIdAndStartOrEnd(10000);
+    // millerWelder.setAttribute03PartIdAndStartOrEnd(10000);
+    millerWelder.setAttribute03PartIdAndStartOrEnd(0xFFFF);
   }
   catch (std::runtime_error ex)
   // catch (std::exception ex)
@@ -109,6 +111,9 @@ int main(int argc, char *argv[])
 
   EIP_UINT outputflag_get = millerWelder.getAttribute03OutputFlag();
 
+  // cout << "Checking the settings by pringing the words--" << endl;
+  // millerWelder.printSetAttribute();
+
   cout << endl << "outputflag_get: " << outputflag_get << endl;
 
   EIP_UINT object_revision = millerWelder.getTcpObjectRevision();
@@ -118,6 +123,10 @@ int main(int argc, char *argv[])
   millerWelder.getIdentityObjectInstance01();
 
   millerWelder.getAssemblyInputInstanceAttribute03();
+
+  // millerWelder.setgetIdentityObjectInstance01();
+
+  // millerWelder.getAssemblyOutputInstanceAttribute02();
 
   while (ros::ok())
   {
